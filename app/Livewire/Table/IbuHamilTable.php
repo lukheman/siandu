@@ -27,7 +27,7 @@ class IbuHamilTable extends Component
     {
     return IbuHamil::query()
         ->when($this->search, function($query) {
-           $query->whereAny(['nama', 'umur', 'alamat', 'hpht', 'hpl'], 'like', '%' . $this->search . '%');
+           $query->whereAny(['nama', 'umur', 'alamat' ], 'like', '%' . $this->search . '%');
         })
         ->paginate(10);
     }
