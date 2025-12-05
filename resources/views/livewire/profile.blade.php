@@ -22,7 +22,7 @@
                             <small class="d-block mt-1 text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <h3 class="mt-3">{{ $form->user->name }}</h3>
+                    <h3 class="mt-3">{{ $form->user->nama }}</h3>
                     <!-- <p class="text-small">Akmal</p> -->
                 </div>
             </div>
@@ -35,10 +35,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="name" class="form-label">Name</label>
-                    <input wire:model="form.name" type="text" id="name" class="form-control"
+                    <label for="nama" class="form-label">Nama</label>
+                    <input wire:model="form.nama" type="text" id="nama" class="form-control"
                         placeholder="Masukkan nama Anda">
-                    @error('form.name')
+                    @error('form.nama')
                         <small class="d-block mt-1 text-danger">{{ $message }}</small>
                     @enderror
                 </div>

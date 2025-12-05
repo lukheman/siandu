@@ -16,7 +16,7 @@ class ProfileForm extends Form
 
     public ?User $user;
 
-    public $name;
+    public $nama;
 
     public $email;
 
@@ -26,7 +26,7 @@ class ProfileForm extends Form
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:50'],
+            'nama' => ['required', 'string', 'max:50'],
             'email' => [
                 'required',
                 'string',
@@ -41,8 +41,8 @@ class ProfileForm extends Form
     public function messages(): array
     {
         return [
-            'name.required' => 'Nama tidak boleh kosong.',
-            'name.max' => 'Nama maksimal 50 karakter.',
+            'nama.required' => 'Nama tidak boleh kosong.',
+            'nama.max' => 'Nama maksimal 50 karakter.',
 
             'email.required' => 'Email tidak boleh kosong.',
             'email.email' => 'Format email tidak valid.',
@@ -64,8 +64,8 @@ class ProfileForm extends Form
 
         // Prepare updates only for changed fields
         $updates = [];
-        if ($this->name !== $this->user->name) {
-            $updates['name'] = $this->name;
+        if ($this->nama !== $this->user->nama) {
+            $updates['nama'] = $this->nama;
         }
         if ($this->email !== $this->user->email) {
             $updates['email'] = $this->email;

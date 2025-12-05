@@ -23,7 +23,7 @@ class Profile extends Component
         $user = User::find(auth()->user()->id);
 
         $this->form->user = $user;
-        $this->form->name = $user->name;
+        $this->form->nama = $user->nama;
         $this->form->email = $user->email;
 
     }

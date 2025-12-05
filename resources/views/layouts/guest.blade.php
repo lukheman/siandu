@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPKS</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tambah untuk ikon -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            color: #212529;
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2c2c2c;
+            --accent: #4a4a4a;
+            --text: #f0f0f0;
+            --bg: #f4f4f4;
         }
-
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: #121212;
+            line-height: 1.6;
+        }
         .hero {
-            background: linear-gradient(45deg, #212529, #343a40, #212529);
-            background-size: 200% 200%;
-            animation: gradientAnimation 15s ease infinite;
-            color: white;
-            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text);
+            padding: 150px 0;
             position: relative;
             overflow: hidden;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -33,159 +37,162 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
             z-index: 1;
         }
-
-        /* Tambah siluet sapi subtle di hero */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        /* Modern subtle pattern */
         .hero::after {
             content: '';
             position: absolute;
-            bottom: 20px;
-            right: 50px;
-            width: 150px;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60"><path d="M10 50 Q20 40 30 50 Q40 60 50 50 Q60 40 70 50 Q80 60 90 50" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="5"/><circle cx="20" cy="30" r="10" fill="rgba(255,255,255,0.2)"/><line x1="5" y1="50" x2="10" y2="55" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><line x1="95" y1="50" x2="90" y2="55" stroke="rgba(255,255,255,0.2)" stroke-width="3"/></svg>') no-repeat;
-            opacity: 0.3;
-            z-index: 1;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60"><path d="M10 50 Q20 40 30 50 Q40 60 50 50 Q60 40 70 50 Q80 60 90 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/><circle cx="20" cy="25" r="12" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat;
+            opacity: 0.4;
+            transform: rotate(-10deg);
         }
-
         .navbar {
-            background: linear-gradient(to right, #212529, #343a40);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: transparent !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 3;
+            transition: background 0.3s ease;
         }
-
+        .navbar.scrolled {
+            background: linear-gradient(to right, var(--primary), var(--secondary)) !important;
+        }
         .navbar-brand,
         .nav-link {
-            color: white !important;
+            color: var(--text) !important;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
-
         .nav-link:hover {
-            color: #ced4da !important;
+            color: #ffffff !important;
         }
-
         .feature-icon {
-            font-size: 2.5rem;
-            color: #212529;
-            transition: transform 0.3s ease;
+            font-size: 3rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
         }
-
         .feature-icon:hover {
-            transform: scale(1.2);
+            transform: translateY(-5px);
+            color: var(--secondary);
         }
-
         .section-title {
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: #343a40;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: #121212;
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
         .section-title::after {
             content: '';
-            width: 60px;
-            height: 4px;
-            background: #495057;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 2px;
         }
-
         .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
-            border-radius: 15px;
+            border-radius: 20px;
             background: white;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-success {
-            background: linear-gradient(to right, #212529, #343a40);
-            border: none;
-            border-radius: 25px;
-            padding: 12px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            color: white;
         }
-
-        .btn-success:hover {
-            background: linear-gradient(to right, #343a40, #212529);
-            transform: translateY(-2px);
+        .card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
         }
-
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: var(--text);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            transform: translateY(-3px);
+        }
         footer {
-            background: linear-gradient(to right, #1e1e1e, #212529);
-            color: #adb5bd;
-            padding: 30px 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--text);
+            padding: 40px 0;
             position: relative;
+            margin-top: 100px;
         }
-
         footer::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, #495057, transparent);
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
         }
-
-        /* Tambah pola spot sapi di footer */
+        /* Modern footer pattern */
         footer::after {
             content: '';
             position: absolute;
-            top: 10px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle, #000 10%, transparent 10%), radial-gradient(circle, #000 15%, transparent 15%);
-            background-position: 0 0, 20px 20px;
-            opacity: 0.1;
+            bottom: 10px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 20%, transparent 20%), radial-gradient(circle, rgba(255,255,255,0.05) 30%, transparent 30%);
+            background-position: 0 0, 25px 25px;
+            opacity: 0.5;
         }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
+        .animate-fadeIn {
+            animation: fadeIn 1s ease forwards;
+        }
         .login-container {
-            min-height: calc(100vh - 200px);
+            min-height: calc(100vh - 150px);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 50px 0;
+            padding: 60px 0;
+        }
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #f0f0f0;
+            }
+            body {
+                background-color: var(--bg);
+                color: var(--text);
+            }
+            .card {
+                background: #1e1e1e;
+            }
+            .section-title {
+                color: var(--text);
+            }
         }
     </style>
 </head>
-
 <body>
-
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-money-bill me-2"></i>SPKS</a>
-            <!-- Tambah ikon sapi di brand -->
+            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-cow me-2"></i>SPKS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -195,7 +202,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('landing') }}" wire:navigate>Beranda</a>
                     </li>
-
                     <li class="nav-item">
                         @auth
                             <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
@@ -207,17 +213,24 @@
             </div>
         </div>
     </nav>
-
     {{ $slot }}
-
     <!-- Footer -->
     <footer class="text-center">
         <div class="container">
             <p class="mb-0">&copy; 2025 SPKS. Semua Hak Dilindungi.</p>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add scrolled class to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
-
 </html>

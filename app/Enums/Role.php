@@ -4,9 +4,8 @@ namespace App\Enums;
 
 enum Role: string
 {
-    case BENDAHARA_KELAS = 'Bendahara Kelas';
-    case BENDAHARA_OSIS = 'Bendahara Osis';
-    case PEMBINA_OSIS = 'Pembina Osis';
+    case ADMIN = 'Admin';
+    case KADER = 'Kader';
 
     public function getLabel(): ?string
     {
@@ -16,9 +15,8 @@ enum Role: string
     public function getColor(): ?string
     {
         return match ($this) {
-            self::BENDAHARA_KELAS => 'primary',
-            self::BENDAHARA_OSIS => 'success',
-            self::PEMBINA_OSIS => 'warning',
+            self::ADMIN => 'primary',
+            self::KADER => 'success',
             default => 'secondary'
         };
     }
@@ -29,8 +27,8 @@ enum Role: string
     }
 
     /**
-     * getOptions: role yang bisa dipilih untuk registrasi (jika perlu).
-     * Misalnya pembina tidak bisa buat akun sendiri.
+     * getOptions: Role yang bisa dipilih di form registrasi.
+     * Misal: admin mungkin tidak boleh mendaftar sendiri.
      */
     public static function getOptions(): array
     {
@@ -41,13 +39,14 @@ enum Role: string
     }
 
     /**
-     * senders: role yang boleh melakukan transaksi/pencatatan.
+     * senders: role yang boleh melakukan pencatatan transaksi.
+     * Kamu bebas nanti ubah sesuai logic aplikasi.
      */
     public static function senders(): array
     {
         return [
-            self::BENDAHARA_KELAS->value,
-            self::BENDAHARA_OSIS->value
+            self::ADMIN->value,
+            self::KADER->value,
         ];
     }
 }
